@@ -8,8 +8,12 @@ public class TestController {
 
     @RequestMapping(path = "/hi", method = RequestMethod.GET)
     @ResponseBody
-    private String sayHi() {
-        return "Well, hi!";
+    private String sayHi(@RequestParam(value = "isLoud", required = false) boolean isLoud) {
+        if (isLoud) {
+            return "Well, HI!";
+        } else {
+            return "Well, hi!";
+        }
     }
 
     @RequestMapping("/texas/howdy")
