@@ -12,6 +12,7 @@ public class HomeController {
     @GetMapping("/hello/{name}")
     public String returnHomePage(@PathVariable String name, Model model) {
         model.addAttribute("name", name);
+        model.addAttribute("fer", "fer");
         return "home";
     }
 

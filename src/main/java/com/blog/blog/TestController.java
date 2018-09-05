@@ -1,7 +1,11 @@
 package com.blog.blog;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class TestController {
@@ -48,7 +52,21 @@ public class TestController {
         return message;
     }
 
+    @GetMapping("/list")
+    private String listOfNames(Model viewModel){
 
+        List<String> names = new ArrayList<>();
+
+        names.add("Fer");
+        names.add("Justin");
+        names.add("Maggie");
+        names.add("Ryan");
+
+        viewModel.addAttribute("listOfNames", names);
+        viewModel.addAttribute("role", "admin");
+
+        return "lists";
+    }
 
 
 }
