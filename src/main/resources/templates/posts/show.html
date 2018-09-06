@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/head :: head('Post')"></head>
+<body class="container">
+
+    <h1>Individual post</h1>
+    <h2 th:text="${post.title}"></h2>
+    <p th:text="${post.body}"></p>
+
+    <script th:replace="fragments/scripts :: scripts"></script>
+</body>
+</html>
