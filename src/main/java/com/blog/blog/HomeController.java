@@ -16,15 +16,4 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/test1")
-    public String returnHomePage() {
-        return "test";
-    }
-
-    @GetMapping("/test2")
-    @ResponseBody
-    public String returnMessage() {
-        return "hello!";
-    }
-
 }
