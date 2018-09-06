@@ -1,19 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <title>Roll Dice</title>
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/head :: head('Roll Dice')"></head>
+<body class="container">
 
     <h1>Roll the Dice and Guess a Number!</h1>
 
-    <a href="/roll-dice/1">Guess 1</a>
-    <a href="/roll-dice/2">Guess 2</a>
-    <a href="/roll-dice/3">Guess 3</a>
-    <a href="/roll-dice/4">Guess 4</a>
-    <a href="/roll-dice/5">Guess 5</a>
-    <a href="/roll-dice/6">Guess 6</a>
+    <a class="btn btn-primary" href="/roll-dice/1">Guess 1</a>
+    <a class="btn btn-primary" href="/roll-dice/2">Guess 2</a>
+    <a class="btn btn-primary" href="/roll-dice/3">Guess 3</a>
+    <a class="btn btn-primary" href="/roll-dice/4">Guess 4</a>
+    <a class="btn btn-primary" href="/roll-dice/5">Guess 5</a>
+    <a class="btn btn-primary" href="/roll-dice/6">Guess 6</a>
 
+    <script th:replace="fragments/scripts :: scripts"></script>
 </body>
 </html>
