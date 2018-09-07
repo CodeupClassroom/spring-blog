@@ -1,5 +1,6 @@
-package com.blog.blog;
+package com.blog.blog.controllers;
 
+import com.blog.blog.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
