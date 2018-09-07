@@ -1,1 +1,1 @@
-console("fer");
+console.log("fer");

@@ -1,4 +1,4 @@
-package com.blog.blog;
+package com.blog.blog.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

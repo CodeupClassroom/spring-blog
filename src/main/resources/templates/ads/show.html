@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="fragments/head :: head('Post')"></head>
+<head th:replace="fragments/head :: head('Ad')"></head>
 <description class="container">
 
-    <h1>Individual post</h1>
-    <h2 th:text="${post.title}"></h2>
-    <p th:text="${post.description}"></p>
+    <h1>Individual Ad</h1>
+    <h2 th:text="${ad.title}"></h2>
+    <p th:text="${ad.description}"></p>
 
     <script th:replace="fragments/scripts :: scripts"></script>
 </description>
