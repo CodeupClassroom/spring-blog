@@ -4,10 +4,7 @@ import com.blog.blog.Post;
 import com.blog.blog.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,15 +31,28 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
-    public String show() {
-        return "Showing form to create new post!";
+    public String postCreateForm(Model model) {
+        model.addAttribute("post", new Post());
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    @ResponseBody
-    public String create() {
-        return "New post was created!";
+    public String insertPost(@ModelAttribute Post post) {
+        postSvc.save(post);
+        return "redirect:/posts";
+    }
+
+    @GetMapping("/posts/{id}/edit")
+    public String postEditForm(@PathVariable long id, Model model) {
+        model.addAttribute("post", postSvc.findOne(id));
+        return "posts/edit";
+    }
+
+    @PostMapping("/posts/{id}/edit")
+    public String updatePost(@ModelAttribute Post post) {
+        // postSvc.save(post);
+        System.out.println("Post updated!");
+        return "redirect:/posts";
     }
 
 }
