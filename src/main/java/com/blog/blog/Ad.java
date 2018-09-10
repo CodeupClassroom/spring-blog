@@ -1,10 +1,24 @@
 package com.blog.blog;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "ads")
 public class Ad {
 
+    @Id
+    @GeneratedValue
     private long id;
+
+    @Column(nullable = false, length = 100)
     private String title;
+
+    @Column(nullable = false, unique = true)
     private String description;
+
+    @Column(columnDefinition = "VARCHAR(200) NOT NULL DEFAULT 'Buy NOW!!'")
+    private String callToAction;
+
 
     public Ad() {
     }
