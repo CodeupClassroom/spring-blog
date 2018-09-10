@@ -1,6 +1,6 @@
 package com.blog.blog.services;
 
-import com.blog.blog.Ad;
+import com.blog.blog.models.Ad;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
