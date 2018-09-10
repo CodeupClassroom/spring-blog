@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('Show Pet')"></head>
+
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
+<main class="container">
+
+    <h1>Pet Information for <span th:text="${pet.name}"></span></h1>
+    <p th:text="${pet.age}"></p>
+    <p th:text="${pet.species}"></p>
+
+    <th:block th:if="${pet.petDetail != null}">
+        <h3>Pet Details</h3>
+        <p th:text="${pet.petDetail.personalityDescription}"></p>
+        <p th:text="${'Is sterile: ' + pet.petDetail.sterile}"></p>
+        <p th:text="${'Is weight in ounces: ' + pet.petDetail.weightInOunces}"></p>
+        <a class="btn btn-warning" th:href="'/pets/' + ${pet.id} + '/details/edit'">Edit pet details</a>
+        <form th:action="'/pets/' + ${id} + '/details/delete'" th:method="POST">
+            <button class="btn btn-danger">Delete Details</button>
+        </form>
+    </th:block>
+    <th:block th:if="${pet.petDetail == null}">
+        <h3>No Pet Details</h3>
+        <a th:href="'/pets/' + ${pet.id} + '/details/create'">Add pet details</a>
+    </th:block>
+
+</main>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<script th:replace="fragments/scripts :: scripts"></script>
+
+</html>
