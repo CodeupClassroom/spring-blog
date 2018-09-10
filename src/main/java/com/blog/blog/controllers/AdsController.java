@@ -1,6 +1,6 @@
 package com.blog.blog.controllers;
 
-import com.blog.blog.Ad;
+import com.blog.blog.models.Ad;
 import com.blog.blog.services.AdsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

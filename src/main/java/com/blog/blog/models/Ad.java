@@ -1,4 +1,4 @@
-package com.blog.blog;
+package com.blog.blog.models;
 
 import javax.persistence.*;
 
@@ -10,15 +10,15 @@ public class Ad {
     @GeneratedValue
     private long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String description;
 
-    @Column(columnDefinition = "VARCHAR(200) NOT NULL DEFAULT 'Buy NOW!!'")
-    private String callToAction;
-
+//    @Column(columnDefinition = "VARCHAR(200) NOT NULL DEFAULT 'Buy NOW!!'")
+//    private String callToAction;
+//
 
     public Ad() {
     }
@@ -32,6 +32,11 @@ public class Ad {
         this.id = id;
         this.title = title;
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("ID: %d, TITLE: %s, DESCRIPTION: %s", id, title, description);
     }
 
     public String getTitle() {
