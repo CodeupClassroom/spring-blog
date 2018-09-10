@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('List of all post')"></head>
-<description class="container">
-    <h1>These are all the posts</h1>
 
-    <div th:each="post : ${posts}">
-        <h2 th:text="${post.title}"></h2>
-        <p th:text="${post.description}"></p>
-        <button class="btn btn-primary">Comment</button>
-    </div>
+    <nav th:replace="fragments/navbar :: navbar"></nav>
+
+    <main class="container">
+        <h1>These are all the posts</h1>
+
+        <div th:each="post : ${posts}">
+            <h2 th:text="${post.title}"></h2>
+            <p th:text="${post.body}"></p>
+            <button class="btn btn-primary">Comment</button>
+        </div>
+
+    </main>
+
+    <footer th:replace="fragments/footer :: footer"></footer>
 
     <script th:replace="fragments/scripts :: scripts"></script>
-</description>
+
 </html>

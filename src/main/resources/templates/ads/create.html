@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head :: head('List of all the ads')"></head>
 <description class="container">
     <h1>Create an Ad</h1>
 
-    <form action="/ads/save" method="post">
+    <form th:action="'/ads/save'" th:method="post" th:object="${ad}">
         <label for="">Title</label>
-        <input type="text" name="title" />
+        <input type="text" th:field="*{title}" />
         <label for="">Description</label>
-        <input type="text" name="desc" />
+        <input type="text" th:field="*{description}" />
         <button class="btn btn-primary">Submit</button>
     </form>
 
