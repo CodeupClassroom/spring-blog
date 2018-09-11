@@ -25,6 +25,24 @@
         <a th:href="'/pets/' + ${pet.id} + '/details/create'">Add pet details</a>
     </th:block>
 
+
+    <th:block th:if="${pet.chewToys.size() > 0}">
+
+        <hr />
+
+        <h3>Chew Toys</h3>
+
+        <div th:each="chewToy : ${pet.chewToys}" class="card">
+
+            <h5 th:text="${chewToy.name}"></h5>
+            <p th:text="${'Is destroyed: ' + chewToy.destroyed}"></p>
+            <p th:text="${'Brand: ' + chewToy.brand}"></p>
+            <p th:text="${'Description: ' + chewToy.description}"></p>
+
+        </div>
+
+    </th:block>
+
 </main>
 
 <footer th:replace="fragments/footer :: footer"></footer>

@@ -12,3 +12,7 @@ VALUES (true, 'he is friendly', 1, 1),
 (true, 'he is sly', 20, 3),
 (false, 'he is slow', 40, 4);
 
+INSERT INTO chew_toys (brand, description, is_destroyed, name, pet_id)
+VALUES ('Mattel', 'A stuffed elephant', false, 'Snuffy', 1),
+('Hasbro', 'A stuffed rabbit', false, 'Hoppers', 1),
+('Bradley', 'A rubber mouse', true, 'Mr. Squeaks', 1)

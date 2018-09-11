@@ -3,6 +3,7 @@ package com.blog.blog.pets.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "pets")
@@ -24,14 +25,19 @@ public class Pet implements Serializable {
     @OneToOne(mappedBy = "pet")
     private PetDetail petDetail;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
+    private List<ChewToy> chewToys;
+
+
     public Pet() {
     }
 
-    public Pet(String name, int age, String species, PetDetail petDetail) {
+    public Pet(String name, int age, String species, PetDetail petDetail, List<ChewToy> chewToys) {
         this.name = name;
         this.age = age;
         this.species = species;
         this.petDetail = petDetail;
+        this.chewToys = chewToys;
     }
 
     public long getId() {
@@ -72,5 +78,13 @@ public class Pet implements Serializable {
 
     public void setPetDetail(PetDetail petDetail) {
         this.petDetail = petDetail;
+    }
+
+    public List<ChewToy> getChewToys() {
+        return chewToys;
+    }
+
+    public void setChewToys(List<ChewToy> chewToys) {
+        this.chewToys = chewToys;
     }
 }
