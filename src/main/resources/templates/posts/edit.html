@@ -21,6 +21,11 @@
         <button class="btn btn-success">Submit</button>
     </form>
 
+    <form th:action="@{/posts/delete}" th:method="post">
+        <input type="hidden" th:value="${post.id}" name="id" />
+        <button class="btn btn-danger">Delete</button>
+    </form>
+
 </main>
 
 <footer th:replace="fragments/footer :: footer"></footer>

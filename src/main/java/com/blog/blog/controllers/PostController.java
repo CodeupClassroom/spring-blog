@@ -1,6 +1,7 @@
 package com.blog.blog.controllers;
 
 import com.blog.blog.models.Post;
+import com.blog.blog.repositories.PostsRepo;
 import com.blog.blog.services.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,21 +10,21 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class PostController {
 
-    private final PostService postSvc;
+    PostsRepo postsRepo;
 
-    public PostController(PostService postSvc) {
-        this.postSvc = postSvc;
+    public PostController(PostsRepo postsRepo) {
+        this.postsRepo = postsRepo;
     }
 
     @GetMapping("/posts")
     public String index(Model viewModel) {
-        viewModel.addAttribute("posts", postSvc.findAll());
+        viewModel.addAttribute("posts", postsRepo.findAll());
         return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
     public String show(@PathVariable long id, Model viewModel) {
-        viewModel.addAttribute("post", postSvc.findOne(id));
+        viewModel.addAttribute("post", postsRepo.findOne(id));
         return "posts/show";
     }
 
@@ -35,20 +36,25 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String insertPost(@ModelAttribute Post post) {
-        postSvc.save(post);
+        postsRepo.save(post);
         return "redirect:/posts";
     }
 
     @GetMapping("/posts/{id}/edit")
     public String postEditForm(@PathVariable long id, Model model) {
-        model.addAttribute("post", postSvc.findOne(id));
+        model.addAttribute("post", postsRepo.findOne(id));
         return "posts/edit";
     }
 
     @PostMapping("/posts/{id}/edit")
     public String updatePost(@ModelAttribute Post post) {
-        // postSvc.save(post);
-        System.out.println("Post updated!");
+        postsRepo.save(post);
+        return "redirect:/posts";
+    }
+
+    @PostMapping("/posts/delete")
+    public String deletePost(@RequestParam(name = "id") long id){
+        postsRepo.delete(id);
         return "redirect:/posts";
     }
 
