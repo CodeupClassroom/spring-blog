@@ -7,14 +7,14 @@
 <main class="container">
 
     <h1>Pet Information for <span th:text="${pet.name}"></span></h1>
-    <p th:text="${pet.age}"></p>
-    <p th:text="${pet.species}"></p>
+    <p th:text="${'Pet age: ' + pet.age + ' years old'}"></p>
+    <p th:text="${'Species: ' + pet.species}"></p>
 
     <th:block th:if="${pet.petDetail != null}">
         <h3>Pet Details</h3>
-        <p th:text="${pet.petDetail.personalityDescription}"></p>
+        <p th:text="${'Behavior: ' + pet.petDetail.personalityDescription}"></p>
         <p th:text="${'Is sterile: ' + pet.petDetail.sterile}"></p>
-        <p th:text="${'Is weight in ounces: ' + pet.petDetail.weightInOunces}"></p>
+        <p th:text="${'Weight in ounces: ' + pet.petDetail.weightInOunces}"></p>
         <a class="btn btn-warning" th:href="'/pets/' + ${pet.id} + '/details/edit'">Edit pet details</a>
         <form th:action="'/pets/' + ${id} + '/details/delete'" th:method="POST">
             <button class="btn btn-danger">Delete Details</button>
@@ -59,7 +59,7 @@
 
     </th:block>
 
-    <a th:href="'/pets/' + ${pet.id} + '/vets/edit'">Edit Vets</a>
+    <a class="btn btn-warning" th:href="'/pets/' + ${pet.id} + '/vets/edit'">Edit Vets</a>
 
 </main>
 
