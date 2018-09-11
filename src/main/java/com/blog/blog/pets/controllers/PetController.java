@@ -1,8 +1,10 @@
 package com.blog.blog.pets.controllers;
 
+import com.blog.blog.pets.models.Pet;
 import com.blog.blog.pets.models.PetDetail;
 import com.blog.blog.pets.repositories.PetDetailRepo;
 import com.blog.blog.pets.repositories.PetRepo;
+import com.blog.blog.pets.repositories.VetRepo;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +19,12 @@ public class PetController {
 
     PetRepo petDao;
     PetDetailRepo petDetailDao;
+    VetRepo vetDao;
 
-    public PetController(PetRepo petDao, PetDetailRepo petDetailDao) {
+    public PetController(PetRepo petDao, PetDetailRepo petDetailDao, VetRepo vetDao) {
         this.petDao = petDao;
         this.petDetailDao = petDetailDao;
+        this.vetDao = vetDao;
     }
 
     @GetMapping("/pets")
@@ -67,6 +71,21 @@ public class PetController {
     private String deletePetDetails(@PathVariable long id) {
         petDetailDao.delete(id);
         return "redirect:/pets/" + id;
+    }
+
+    @GetMapping("/pets/{id}/vets/edit")
+    private String editPetVets(@PathVariable long id, Model model) {
+        model.addAttribute("vets", vetDao.findAll());
+        model.addAttribute("pet", petDao.findOne(id));
+        return "pets/vet-edit";
+    }
+
+    @PostMapping("/pets/{id}/vets/edit")
+    private String updatePetVets(@PathVariable Long id, @ModelAttribute Pet formPet) {
+        Pet pet = petDao.findOne(id);
+        pet.setVets(formPet.getVets());
+        petDao.save(pet);
+        return "redirect:/pets/" + pet.getId();
     }
 
 }

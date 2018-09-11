@@ -16,3 +16,15 @@ INSERT INTO chew_toys (brand, description, is_destroyed, name, pet_id)
 VALUES ('Mattel', 'A stuffed elephant', false, 'Snuffy', 1),
 ('Hasbro', 'A stuffed rabbit', false, 'Hoppers', 1),
 ('Bradley', 'A rubber mouse', true, 'Mr. Squeaks', 1)
+
+
+INSERT INTO vets (address, name, phone_number)
+VALUES ('123 Memory Lane', 'Dr. Kim Sanders', '210-555-4848'),
+('824 Waldo Way', 'Dr. Fred Barnes', '210-555-5432'),
+('156 Lakehills', 'Dr. Pam Shot', '210-555-8888'),
+('867 Vista Drive', 'Dr. Sam Smith', '210-555-1010');
+
+INSERT INTO pets_vets (pet_id, vet_id)
+VALUES (1, 1),
+       (1, 2),
+       (3, 3);

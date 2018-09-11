@@ -15,6 +15,7 @@ public class ChewToy implements Serializable {
 
     private String brand;
 
+    @Column(name = "is_destroyed")
     private boolean destroyed;
 
     private String description;
