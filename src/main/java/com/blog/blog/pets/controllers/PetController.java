@@ -27,14 +27,14 @@ public class PetController {
     }
 
     @GetMapping("/pets")
-    private String petsIndex(Model model) {
+    public String index(Model model) {
         model.addAttribute("pets", petDao.findAll());
         return "pets/all-pets";
     }
 
     @GetMapping("/pets/{id}")
-    private String showPet(@PathVariable long id, Model model) {
-        model.addAttribute(petDao.findOne(id));
+    public String show(@PathVariable long id, Model model) {
+        model.addAttribute("pet", petDao.findOne(id));
         return "pets/show-pet";
     }
 
@@ -52,11 +52,10 @@ public class PetController {
         return "redirect:/pets/" + id;
     }
 
-
     @GetMapping("/pets/{id}/details/edit")
     private String editPetDetails(@PathVariable long id, Model model) {
         model.addAttribute("petDetail", petDetailDao.findOne(id));
-        return "pets/details-create";
+        return "pets/details-edit";
     }
 
     @PostMapping("/pets/{id}/details/edit")
@@ -68,7 +67,7 @@ public class PetController {
 
     @PostMapping("/pets/{id}/details/delete")
     private String deletePetDetails(@PathVariable long id) {
-        petDetailDao.delete(id);
+        petDetailDao.delete(petDao.findOne(id).getPetDetail());
         return "redirect:/pets/" + id;
     }
 

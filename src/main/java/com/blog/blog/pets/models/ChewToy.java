@@ -61,12 +61,12 @@ public class ChewToy implements Serializable {
         this.brand = brand;
     }
 
-    public boolean getDestroyed() {
+    public boolean isDestroyed() {
         return destroyed;
     }
 
     public void setDestroyed(boolean destroyed) {
-        destroyed = destroyed;
+        this.destroyed = destroyed;
     }
 
     public String getDescription() {

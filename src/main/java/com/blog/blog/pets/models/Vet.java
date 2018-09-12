@@ -2,11 +2,12 @@ package com.blog.blog.pets.models;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "vets")
-public class Vet {
+public class Vet implements Serializable {
 
     @Id
     @GeneratedValue
@@ -19,7 +20,6 @@ public class Vet {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    // relationships
     @ManyToMany(mappedBy = "vets")
     private List<Pet> pets;
 

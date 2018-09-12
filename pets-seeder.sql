@@ -6,6 +6,9 @@ VALUES ('Fred', 2, 'fish'),
 ('Bud', 5, 'snake'),
 ('Mr. Pig', 6, 'turtle');
 
+INSERT INTO pets (name, age, species)
+VALUES ('Lexie', 4, 'dog');
+
 INSERT INTO pet_details (is_sterile, personality_description, weight_in_ounces, pet_id)
 VALUES (true, 'he is friendly', 1, 1),
 (false, 'he is nice', 1, 2),
@@ -15,7 +18,7 @@ VALUES (true, 'he is friendly', 1, 1),
 INSERT INTO chew_toys (brand, description, is_destroyed, name, pet_id)
 VALUES ('Mattel', 'A stuffed elephant', false, 'Snuffy', 1),
 ('Hasbro', 'A stuffed rabbit', false, 'Hoppers', 1),
-('Bradley', 'A rubber mouse', true, 'Mr. Squeaks', 1)
+('Bradley', 'A rubber mouse', true, 'Mr. Squeaks', 1);
 
 
 INSERT INTO vets (address, name, phone_number)

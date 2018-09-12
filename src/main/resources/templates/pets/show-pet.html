@@ -10,13 +10,15 @@
     <p th:text="${'Pet age: ' + pet.age + ' years old'}"></p>
     <p th:text="${'Species: ' + pet.species}"></p>
 
+    <!-- DETAILS -->
+
     <th:block th:if="${pet.petDetail != null}">
         <h3>Pet Details</h3>
         <p th:text="${'Behavior: ' + pet.petDetail.personalityDescription}"></p>
         <p th:text="${'Is sterile: ' + pet.petDetail.sterile}"></p>
         <p th:text="${'Weight in ounces: ' + pet.petDetail.weightInOunces}"></p>
         <a class="btn btn-warning" th:href="'/pets/' + ${pet.id} + '/details/edit'">Edit pet details</a>
-        <form th:action="'/pets/' + ${id} + '/details/delete'" th:method="POST">
+        <form th:action="'/pets/' + ${pet.id} + '/details/delete'" th:method="POST">
             <button class="btn btn-danger">Delete Details</button>
         </form>
     </th:block>
@@ -25,6 +27,7 @@
         <a th:href="'/pets/' + ${pet.id} + '/details/create'">Add pet details</a>
     </th:block>
 
+    <!-- CHEW TOYS -->
 
     <th:block th:if="${pet.chewToys.size() > 0}">
 
@@ -42,6 +45,8 @@
         </div>
 
     </th:block>
+
+    <!-- VETS -->
 
     <th:block th:if="${pet.vets.size() > 0}">
 

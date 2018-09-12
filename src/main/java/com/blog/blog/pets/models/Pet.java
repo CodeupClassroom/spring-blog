@@ -25,16 +25,18 @@ public class Pet implements Serializable {
     @OneToOne(mappedBy = "pet")
     private PetDetail petDetail;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "pet")
     private List<ChewToy> chewToys;
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "pets_vets",
-            joinColumns={@JoinColumn(name="pet_id")},
-            inverseJoinColumns={@JoinColumn(name="vet_id")}
+    @JoinTable (
+        name = "pets_vets",
+        joinColumns={@JoinColumn(name = "pet_id")},
+        inverseJoinColumns={@JoinColumn(name="vet_id")}
     )
     private List<Vet> vets;
+
 
     public Pet() {
     }
@@ -46,6 +48,14 @@ public class Pet implements Serializable {
         this.petDetail = petDetail;
         this.chewToys = chewToys;
         this.vets = vets;
+    }
+
+    public PetDetail getPetDetail() {
+        return petDetail;
+    }
+
+    public void setPetDetail(PetDetail petDetail) {
+        this.petDetail = petDetail;
     }
 
     public long getId() {
@@ -78,14 +88,6 @@ public class Pet implements Serializable {
 
     public void setSpecies(String species) {
         this.species = species;
-    }
-
-    public PetDetail getPetDetail() {
-        return petDetail;
-    }
-
-    public void setPetDetail(PetDetail petDetail) {
-        this.petDetail = petDetail;
     }
 
     public List<ChewToy> getChewToys() {

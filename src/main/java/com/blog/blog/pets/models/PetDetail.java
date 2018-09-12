@@ -41,12 +41,12 @@ public class PetDetail implements Serializable {
         this.id = id;
     }
 
-    public boolean getSterile() {
+    public boolean isSterile() {
         return sterile;
     }
 
     public void setSterile(boolean sterile) {
-        sterile = sterile;
+        this.sterile = sterile;
     }
 
     public String getPersonalityDescription() {
