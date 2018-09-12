@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head('All pets')"></head>
+
+<nav th:replace="fragments/navbar :: navbar"></nav>
+
+<main class="container">
+
+    <h1>These are all the pets...</h1>
+
+    <div th:each="pet : ${pets}">
+        <h2 th:text="${pet.name}"></h2>
+        <p th:text="${pet.age}"></p>
+        <p th:text="${pet.species}"></p>
+    </div>
+
+</main>
+
+<footer th:replace="fragments/footer :: footer"></footer>
+
+<script th:replace="fragments/scripts :: scripts"></script>
+
+</html>
