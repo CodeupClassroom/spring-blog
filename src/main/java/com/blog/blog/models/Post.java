@@ -15,18 +15,25 @@ public class Post {
     @Column(nullable = false)
     private String body;
 
+    @ManyToOne
+    private User user;
+
     public Post() {
     }
 
-    public Post(String title, String body) {
+//     this is the constructor we use to create
+    public Post(String title, String body, User user) {
         this.title = title;
         this.body = body;
+        this.user = user;
     }
 
-    public Post(long id, String title, String body) {
+//    This is the constructor we use to display everything
+    public Post(long id, String title, String body, User user) {
         this.id = id;
         this.title = title;
         this.body = body;
+        this.user = user;
     }
 
     public String getTitle() {
@@ -51,5 +58,13 @@ public class Post {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
