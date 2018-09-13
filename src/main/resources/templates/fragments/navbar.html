@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
     <nav th:fragment="navbar" class="navbar navbar-dark bg-dark navbar-expand-sm">
         <div class="container">
@@ -17,6 +17,17 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">About Us</a>
+                    </li>
+                    <li sec:authorize="isAuthenticated()" class="nav-item">
+                        <a class="nav-link" href="#">Welcome, <span th:text="${#authentication.principal.username}"></span></a>
+                    </li>
+                    <li sec:authorize="!isAuthenticated()" class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <form th:action="@{/logout}" th:method="post">
+                            <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+                        </form>
                     </li>
                 </ul>
             </div>
